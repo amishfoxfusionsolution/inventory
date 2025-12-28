@@ -59,13 +59,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   async function loadProfile(userId: string) {
     try {
-      const { data, error } = await supabase
+      let { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
         .maybeSingle();
 
       if (error) throw error;
+      
+      // If profile doesn't exist, create one with demo organization
+      if (!data) {
+        const demoOrgId = '00000000-0000-0000-0000-000000000001';
+        const { data: userData } = await supabase.auth.getUser();
+        
+        const newProfile = {
+          id: userId,
+          email: userData?.user?.email || '',
+          full_name: userData?.user?.user_metadata?.full_name || '',
+          avatar_url: '',
+          role: 'viewer',
+          organization_id: demoOrgId,
+        };
+        
+        await supabase
+          .from('profiles')
+          .insert([newProfile]);
+        
+        data = newProfile;
+      }
+      
       setProfile(data);
     } catch (error) {
       console.error('Error loading profile:', error);
