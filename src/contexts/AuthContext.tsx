@@ -77,7 +77,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           email: userData?.user?.email || '',
           full_name: userData?.user?.user_metadata?.full_name || '',
           avatar_url: '',
-          role: 'viewer',
+          role: 'admin',
           organization_id: demoOrgId,
         };
         
