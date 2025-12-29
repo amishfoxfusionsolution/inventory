@@ -86,7 +86,7 @@ export function RegisterPage({ onToggle }: RegisterPageProps) {
             Create Account
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
-            Start managing your inventory today
+            Get started with inventory management
           </p>
 
           {error && (

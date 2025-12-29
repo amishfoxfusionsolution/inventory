@@ -38,10 +38,10 @@ export function LoginPage({ onToggle }: LoginPageProps) {
           </div>
 
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-2">
-            Welcome Back
+            Sign In
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
-            Sign in to your inventory dashboard
+            to manage your inventory
           </p>
 
           {error && (

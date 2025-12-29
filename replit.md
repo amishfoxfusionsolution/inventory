@@ -1,68 +1,47 @@
-# InventoryPro - Inventory Management System
+# InventoryPro
 
-## Overview
-A modern React + TypeScript inventory management application with a striking diagonal black/white UI design. Built with Vite and Supabase for the backend/database.
+A straightforward inventory management app built with React and TypeScript. Tracks stock, suppliers, and warehouse locations with a clean interface.
 
-## Features
-✅ **Authentication**: User signup/login with Supabase  
-✅ **Dashboard**: Inventory metrics, stock movements, alerts  
-✅ **Inventory Management**: Full CRUD operations on inventory items  
-✅ **Stock Tracking**: Monitor quantities, locations, suppliers  
-✅ **Alerts System**: Low stock and expiry alerts  
-✅ **Multi-organization**: Support for multiple organizations  
-✅ **Role-based Access**: Admin, Manager, Viewer roles  
-✅ **Diagonal UI**: 45-degree white (top/left) to black (bottom/right) split  
+## What's in here
 
-## Tech Stack
-- **Frontend**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **Database/Auth**: Supabase
-- **Icons**: Lucide React
-- **Design**: Diagonal gradient background with white/black split
+**Frontend**: React 18 + Vite for fast dev server and optimized builds.  
+**Database**: Supabase handles auth and data storage.  
+**Styling**: Tailwind CSS, custom diagonal background design.
 
-## Project Structure
+## Project layout
+
 ```
 src/
-  components/
-    auth/         - Login and registration pages
-    layout/       - Header and Sidebar navigation
-    pages/        - Dashboard, Inventory, Categories, Suppliers, etc.
-  contexts/       - Auth and Theme providers
-  lib/            - Supabase client configuration
-supabase/
-  migrations/     - Database schema and sample data
+  components/auth/      - login and signup forms
+  components/pages/     - main app pages
+  components/layout/    - sidebar and header
+  contexts/             - auth state management
+  lib/                  - supabase client setup
+supabase/migrations/    - schema and sample data
 ```
 
-## UI Design
-- **Diagonal Split**: 45-degree gradient from white (top-left) to black (bottom-right)
-- **Applied to**: Login, Register, and Dashboard pages
-- **Color Scheme**: Clean white cards on gradient background
+## Running locally
 
-## Development
-- Run: `npm run dev` (port 5000, 0.0.0.0)
-- Build: `npm run build`
-- Type check: `npm run typecheck`
+```bash
+npm run dev          # starts on port 5000
+npm run build        # builds for production
+npm run typecheck    # runs TypeScript check
+```
 
-## Environment Variables
-- `VITE_SUPABASE_URL` - Supabase project URL
-- `VITE_SUPABASE_ANON_KEY` - Supabase public key
+## Setup
 
-## Database Schema
-Tables included:
-- **Core**: profiles, organizations
-- **Inventory**: inventory_items, categories, suppliers, locations
-- **Operations**: stock_movements, purchase_orders, alerts
-- **Audit**: audit_logs
+Need two env vars from Supabase:
+- `VITE_SUPABASE_URL` - your project URL
+- `VITE_SUPABASE_ANON_KEY` - anonymous key
 
-## Getting Started
-1. Sign up with any valid email
-2. Auto-assigned to Demo Company with Admin role
-3. Access dashboard with sample inventory data
-4. Manage inventory items with full CRUD support
+Database is pre-configured with sample inventory data.
 
-## Deployment
-- **Type**: Static site (Vite build)
-- **Build command**: `npm run build`
-- **Output**: dist/ folder
-- **Ready to publish on Replit**
+## How it works
+
+Sign up and you're auto-assigned to a demo organization with admin access. Full CRUD on inventory items, categories, suppliers, and locations. RLS is disabled for simplicity.
+
+Dashboard shows inventory totals, low stock alerts, and recent movements. Can filter and search items, add new ones, or edit existing records.
+
+## UI
+
+Diagonal split background (white top-left, black bottom-right) on auth pages. Dashboard uses a white card layout on the same background.

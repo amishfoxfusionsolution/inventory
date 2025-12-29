@@ -67,7 +67,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (error) throw error;
       
-      // If profile doesn't exist, create one with demo organization
+      // Create profile for new users
       if (!data) {
         const demoOrgId = '00000000-0000-0000-0000-000000000001';
         const { data: userData } = await supabase.auth.getUser();
@@ -81,10 +81,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           organization_id: demoOrgId,
         };
         
-        await supabase
-          .from('profiles')
-          .insert([newProfile]);
-        
+        await supabase.from('profiles').insert([newProfile]);
         data = newProfile;
       }
       
