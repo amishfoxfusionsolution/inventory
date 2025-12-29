@@ -64,7 +64,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex">
+    <div style={{background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%)'}} className="min-h-screen flex fixed inset-0">
       <Sidebar
         currentPage={currentPage}
         onNavigate={setCurrentPage}

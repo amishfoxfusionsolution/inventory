@@ -23,6 +23,11 @@
 
 .diagonal-split {
   position: relative;
-  background: linear-gradient(135deg, #000000 0%, #000000 50%, #ffffff 50%, #ffffff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%);
+  min-height: 100vh;
+}
+
+html, body, #root {
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%);
   min-height: 100vh;
 }
