@@ -481,9 +481,19 @@ function ItemModal({ item, onClose, onSave, categories, suppliers, locations }: 
     setLoading(true);
 
     try {
+      if (!profile?.organization_id) {
+        throw new Error('Organization not found. Please refresh and try again.');
+      }
+
       const data = {
         ...formData,
-        organization_id: profile?.organization_id,
+        organization_id: profile.organization_id,
+        // Convert strings to numbers
+        quantity: parseInt(formData.quantity.toString()),
+        unit_cost: parseFloat(formData.unit_cost.toString()),
+        selling_price: parseFloat(formData.selling_price.toString()),
+        reorder_level: parseInt(formData.reorder_level.toString()),
+        reorder_quantity: parseInt(formData.reorder_quantity.toString()),
       };
 
       if (item) {
@@ -499,11 +509,12 @@ function ItemModal({ item, onClose, onSave, categories, suppliers, locations }: 
         if (error) throw error;
       }
 
+      alert(item ? 'Item updated successfully!' : 'Item added successfully!');
       onSave();
       onClose();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error saving item:', error);
-      alert('Error saving item. Please try again.');
+      alert(`Error: ${error?.message || 'Failed to save item. Please try again.'}`);
     } finally {
       setLoading(false);
     }
